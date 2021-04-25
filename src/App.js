@@ -9,22 +9,17 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [babyNames, setBabyNames] = useState(babyNamesData);
-  let [choosenBabyId, setChoosenBabyId] = useState(null);
-  let [favoriteName, setFavoriteName] = useState([]);
   let [newFavoriteName, setNewFavoriteName] = useState([]);
-  let [newFavoriteArray, setNewFavoriteArray] = useState([]);
   let [noneFavoriteNames, setNoneFavoriteNames] = useState(babyNamesData);
 
   function filterNames(e) {
     console.log("filter called");
-    console.log(e.target.value);
     let searchInputValue = e.target.value.toUpperCase();
     let newarray = babyNamesData.filter((baby) => {
       return baby.name.toUpperCase().includes(searchInputValue);
     });
     console.log(newarray);
-    setBabyNames(newarray);
-    console.log(newarray === babyNamesData);
+    setNoneFavoriteNames(newarray);
   }
 
   function moveToFavorite(e) {
@@ -40,7 +35,6 @@ function App() {
     setNewFavoriteName(newArray);
   }
   function moveFromFavorite(e) {
-    console.log("move from called");
     let name = e.target.value;
     let favooriteNames = newFavoriteName.filter((baby) => {
       return baby.name !== name;
@@ -53,7 +47,8 @@ function App() {
     setNewFavoriteName(favooriteNames);
   }
   function resetSearch() {
-    setBabyNames(babyNamesData);
+    setNoneFavoriteNames(babyNamesData);
+    setNewFavoriteName([]);
   }
   return (
     <>
