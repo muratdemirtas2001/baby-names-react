@@ -1,6 +1,7 @@
 import React from "react";
+import SingleBabyCard from "./SingleBabyCard";
 
-function BabyNamesCard({ babyNames,moveToFavorite }) {
+function BabyNamesCard({ babyNames, moveToFavorite }) {
   return (
     <>
       <div className="baby-names-card">
@@ -9,31 +10,9 @@ function BabyNamesCard({ babyNames,moveToFavorite }) {
             return baby1.name.localeCompare(baby2.name);
           })
           .map((baby) => {
-            if (baby.sex === "m") {
-              return (
-                <button
-                  onClick={moveToFavorite}
-                  value={baby.name}
-                  id={baby.id}
-                  key={baby.id}
-                  className="baby-male button"
-                >
-                  {baby.name}
-                </button>
-              );
-            } else {
-              return (
-                <button
-                  onClick={moveToFavorite}
-                  value={baby.name}
-                  id={baby.id}
-                  key={baby.id}
-                  className="baby-female button"
-                >
-                  {baby.name}
-                </button>
-              );
-            }
+            return (
+              <SingleBabyCard key={baby.id} baby={baby} moveToFavorite={moveToFavorite} />
+            );
           })}
       </div>
     </>
