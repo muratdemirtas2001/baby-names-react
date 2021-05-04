@@ -18,7 +18,7 @@ function App() {
     if (storedFavoriteNames) {
       setNewFavoriteName(JSON.parse(storedFavoriteNames));
     }
-  }, []);
+  }, [storedFavoriteNames]);
   // console.log(storedFavoriteNames);
   // console.log(isClickingFavoriteNames);
   function filterNames(e) {
