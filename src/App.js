@@ -8,10 +8,10 @@ import { useEffect, useState } from "react";
 import GenderSelector from "./GenderSelector";
 
 function App() {
-  const [babyNames, setBabyNames] = useState(babyNamesData);
+  // const [babyNames, setBabyNames] = useState(babyNamesData);
   let [newFavoriteName, setNewFavoriteName] = useState([]);
   let [noneFavoriteNames, setNoneFavoriteNames] = useState(babyNamesData);
-  let [isClickingFavoriteNames, setIsClickingFavoriteNames] = useState(true);
+  let [isClickingFavoriteNames] = useState(true);
   // localStorage.setItem("storedFavoriteNames",newFavoriteName);
   let storedFavoriteNames = localStorage.getItem("storedFavoriteNames");
   useEffect(() => {
@@ -45,7 +45,7 @@ function App() {
     setNewFavoriteName(newArray);
     localStorage.setItem(
       "storedFavoriteNames",
-      JSON.stringify(newFavoriteName)
+      JSON.stringify(newArray)
     );
   }
   function moveFromFavorite(e) {

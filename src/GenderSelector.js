@@ -6,9 +6,9 @@ import babygirlpicture from "./kizbebek.jpeg";
 function GenderSelector({ displayBoyNames, displayGirlNames, resetSearch }) {
   return (
     <>
-      <img src={boyandgirlpicture} onClick={resetSearch}></img>
-      <img src={babyboypicture} onClick={displayBoyNames}></img>
-      <img src={babygirlpicture} onClick={displayGirlNames}></img>
+      <img src={boyandgirlpicture} alt="boyandgirl" onClick={resetSearch}></img>
+      <img src={babyboypicture} alt="boy" onClick={displayBoyNames}></img>
+      <img src={babygirlpicture} alt="girl" onClick={displayGirlNames}></img>
     </>
   );
 }
