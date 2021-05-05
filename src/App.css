@@ -1,18 +1,78 @@
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50vw;
+}
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.babyIcon {
+  margin: 0px 50px;
+  cursor: pointer;
+  padding: 5px;
+  /* border-radius: 15px; */
+}
+/* .babyIcon-border {
+  border: 1px solid black;
+} */
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0px;
+}
+.favorite-names-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.favorite-names-section {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
 .baby-names-card {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  border: pink 1px solid;
 }
 .baby-male {
-  background-color: blue;
+  background-color: rgb(60, 57, 241);
+  color: white;
+  font-weight: 900;
 }
 .baby-female {
   background-color: pink;
 }
 .button {
+  width: 80px;
+  height: 40px;
   margin: 5px 5px;
+  border: transparent;
+  border-radius: 10px;
+  cursor: pointer;
 }
 img {
   width: 20px;
+  margin: 0px 10px;
+}
+.gender-picture {
+  border-bottom: 10px solid black;
 }

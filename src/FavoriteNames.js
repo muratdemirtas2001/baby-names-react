@@ -8,20 +8,22 @@ function FavoriteNames({
 }) {
   if (newFavoriteName) {
     return (
-      <div>
+      <div className="favorite-names-wrapper">
         <p>Favorite names:</p>
-        {newFavoriteName.map((baby) => {
-          return (
-            <>
-              <SingleBabyCard
-                isClickingFavoriteNames={isClickingFavoriteNames}
-                baby={baby}
-                moveFromFavorite={moveFromFavorite}
-                key={baby.id+1000}
-              />
-            </>
-          );
-        })}
+        <div className="favorite-names-section">
+          {newFavoriteName.map((baby) => {
+            return (
+              <>
+                <SingleBabyCard
+                  isClickingFavoriteNames={isClickingFavoriteNames}
+                  baby={baby}
+                  moveFromFavorite={moveFromFavorite}
+                  key={baby.id}
+                />
+              </>
+            );
+          })}
+        </div>
       </div>
     );
   } else return null;

@@ -1,4 +1,5 @@
 import "./App.css";
+
 import babyNamesData from "./babyNamesData.json";
 import BabyNamesCard from "./BabyNamesCard";
 import SearchBar from "./SearchBar";
@@ -8,49 +9,47 @@ import { useEffect, useState } from "react";
 import GenderSelector from "./GenderSelector";
 
 function App() {
-  // const [babyNames, setBabyNames] = useState(babyNamesData);
   let [newFavoriteName, setNewFavoriteName] = useState([]);
   let [noneFavoriteNames, setNoneFavoriteNames] = useState(babyNamesData);
   let [isClickingFavoriteNames] = useState(true);
-  // localStorage.setItem("storedFavoriteNames",newFavoriteName);
   let storedFavoriteNames = localStorage.getItem("storedFavoriteNames");
+  let storedNoneFavoriteNames = localStorage.getItem("storedNoneFavoriteNames");
+
   useEffect(() => {
-    if (storedFavoriteNames) {
+    if (storedFavoriteNames && storedNoneFavoriteNames) {
       setNewFavoriteName(JSON.parse(storedFavoriteNames));
+      setNoneFavoriteNames(JSON.parse(storedNoneFavoriteNames));
     }
   }, [storedFavoriteNames]);
-  // console.log(storedFavoriteNames);
-  // console.log(isClickingFavoriteNames);
   function filterNames(e) {
-    console.log("filter called");
     let searchInputValue = e.target.value.toUpperCase();
-    let newarray = babyNamesData.filter((baby) => {
+    let filteredBabyNames = babyNamesData.filter((baby) => {
       return baby.name.toUpperCase().includes(searchInputValue);
     });
-    console.log(newarray);
-    setNoneFavoriteNames(newarray);
+    setNoneFavoriteNames(filteredBabyNames);
   }
 
   function moveToFavorite(e) {
     setNewFavoriteName();
     let name = e.target.value;
-    let newArray = babyNamesData.filter((baby) => {
+    let chosenName = babyNamesData.filter((baby) => {
       return baby.name === name;
     });
-    newArray = [...newFavoriteName, ...newArray];
+    chosenName = [...newFavoriteName, ...chosenName];
     noneFavoriteNames = noneFavoriteNames.filter((baby) => {
       return baby.name !== name;
     });
     setNoneFavoriteNames(noneFavoriteNames);
-    setNewFavoriteName(newArray);
+    setNewFavoriteName(chosenName);
+    localStorage.setItem("storedFavoriteNames", JSON.stringify(chosenName));
     localStorage.setItem(
-      "storedFavoriteNames",
-      JSON.stringify(newArray)
+      "storedNoneFavoriteNames",
+      JSON.stringify(noneFavoriteNames)
     );
   }
   function moveFromFavorite(e) {
     let name = e.target.value;
-    let favooriteNames = newFavoriteName.filter((baby) => {
+    let favoriteNames = newFavoriteName.filter((baby) => {
       return baby.name !== name;
     });
     let addNonefavorite = newFavoriteName.filter((baby) => {
@@ -58,49 +57,66 @@ function App() {
     });
     noneFavoriteNames = [...noneFavoriteNames, ...addNonefavorite];
     setNoneFavoriteNames(noneFavoriteNames);
-    setNewFavoriteName(favooriteNames);
+    setNewFavoriteName(favoriteNames);
+    localStorage.setItem("storedFavoriteNames", JSON.stringify(favoriteNames));
+    localStorage.setItem(
+      "storedNoneFavoriteNames",
+      JSON.stringify(noneFavoriteNames)
+    );
   }
+  const [genderPictureClass, setGenderPictureClass] = useState([
+    false,
+    false,
+    false]
+  );
+
   function resetSearch() {
     setNoneFavoriteNames(babyNamesData);
     setNewFavoriteName([]);
-    // localStorage.removeItem("storedFavoriteNames");
+    setGenderPictureClass([true, false, false]);
     localStorage.clear();
   }
   function displayBoyNames() {
-    console.log("hi");
-    let boyNames = noneFavoriteNames.filter((baby) => {
+    let boyNames = babyNamesData.filter((baby) => {
       return baby.sex === "m";
     });
     setNoneFavoriteNames(boyNames);
+    setGenderPictureClass([false, true, false]);
   }
   function displayGirlNames() {
-    console.log("hi");
     let girlNames = babyNamesData.filter((baby) => {
       return baby.sex === "f";
     });
     setNoneFavoriteNames(girlNames);
+    setGenderPictureClass([false, false, true]);
   }
   return (
-    <>
-      <SearchBar filterNames={filterNames} />
-      <GenderSelector
-        displayBoyNames={displayBoyNames}
-        displayGirlNames={displayGirlNames}
-        resetSearch={resetSearch}
-      />
-      <ResetButton resetSearch={resetSearch} />
-      <FavoriteNames
-        babyNamesData={babyNamesData}
-        moveFromFavorite={moveFromFavorite}
-        newFavoriteName={newFavoriteName}
-        isClickingFavoriteNames={isClickingFavoriteNames}
-      />
+    <div className="app-wrapper">
+      <div className="navbar">
+        <SearchBar filterNames={filterNames} />
+        <GenderSelector
+          displayBoyNames={displayBoyNames}
+          displayGirlNames={displayGirlNames}
+          resetSearch={resetSearch}
+          genderPictureClass={genderPictureClass}
+        />
+        <ResetButton resetSearch={resetSearch} />
+      </div>
       <hr></hr>
-      <BabyNamesCard
-        babyNames={noneFavoriteNames}
-        moveToFavorite={moveToFavorite}
-      />
-    </>
+      <div className="content-wrapper">
+        <FavoriteNames
+          babyNamesData={babyNamesData}
+          moveFromFavorite={moveFromFavorite}
+          newFavoriteName={newFavoriteName}
+          isClickingFavoriteNames={isClickingFavoriteNames}
+        />
+        <hr></hr>
+        <BabyNamesCard
+          babyNames={noneFavoriteNames}
+          moveToFavorite={moveToFavorite}
+        />
+      </div>
+    </div>
   );
 }
 
