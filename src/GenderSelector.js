@@ -1,9 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaBabyCarriage } from "react-icons/fa";
-
-import boyandgirlpicture from "./erkekkizresim.jpeg";
-import babyboypicture from "./erkekbebek.jpeg";
-import babygirlpicture from "./kizbebek.jpeg";
 
 function GenderSelector({
   displayBoyNames,

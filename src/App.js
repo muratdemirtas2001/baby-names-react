@@ -20,7 +20,7 @@ function App() {
       setNewFavoriteName(JSON.parse(storedFavoriteNames));
       setNoneFavoriteNames(JSON.parse(storedNoneFavoriteNames));
     }
-  }, [storedFavoriteNames]);
+  }, [storedFavoriteNames, storedNoneFavoriteNames]);
   function filterNames(e) {
     let searchInputValue = e.target.value.toUpperCase();
     let filteredBabyNames = babyNamesData.filter((baby) => {
