@@ -4,6 +4,7 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+  width: 100vw;
 }
 .app-wrapper {
   display: flex;
@@ -75,4 +76,15 @@ img {
 }
 .gender-picture {
   border-bottom: 10px solid black;
+}
+@media screen and (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+  }
+  .app-wrapper {
+    width: 100vw;
+  }
+  .icon-wrapper{
+    display: flex;
+  }
 }
