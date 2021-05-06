@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import GenderSelector from "./GenderSelector";
 
 function App() {
-  let [newFavoriteName, setNewFavoriteName] = useState([]);
+  let [favoriteName, setFavoriteName] = useState([]);
   let [noneFavoriteNames, setNoneFavoriteNames] = useState(babyNamesData);
   let [isClickingFavoriteNames] = useState(true);
   let storedFavoriteNames = localStorage.getItem("storedFavoriteNames");
@@ -17,7 +17,7 @@ function App() {
 
   useEffect(() => {
     if (storedFavoriteNames && storedNoneFavoriteNames) {
-      setNewFavoriteName(JSON.parse(storedFavoriteNames));
+      setFavoriteName(JSON.parse(storedFavoriteNames));
       setNoneFavoriteNames(JSON.parse(storedNoneFavoriteNames));
     }
   }, [storedFavoriteNames, storedNoneFavoriteNames]);
@@ -30,17 +30,17 @@ function App() {
   }
 
   function moveToFavorite(e) {
-    setNewFavoriteName();
+    setFavoriteName();
     let name = e.target.value;
     let chosenName = babyNamesData.filter((baby) => {
       return baby.name === name;
     });
-    chosenName = [...newFavoriteName, ...chosenName];
+    chosenName = [...favoriteName, ...chosenName];
     noneFavoriteNames = noneFavoriteNames.filter((baby) => {
       return baby.name !== name;
     });
     setNoneFavoriteNames(noneFavoriteNames);
-    setNewFavoriteName(chosenName);
+    setFavoriteName(chosenName);
     localStorage.setItem("storedFavoriteNames", JSON.stringify(chosenName));
     localStorage.setItem(
       "storedNoneFavoriteNames",
@@ -49,15 +49,15 @@ function App() {
   }
   function moveFromFavorite(e) {
     let name = e.target.value;
-    let favoriteNames = newFavoriteName.filter((baby) => {
+    let favoriteNames = favoriteName.filter((baby) => {
       return baby.name !== name;
     });
-    let addNonefavorite = newFavoriteName.filter((baby) => {
+    let addNonefavorite = favoriteName.filter((baby) => {
       return baby.name === name;
     });
     noneFavoriteNames = [...noneFavoriteNames, ...addNonefavorite];
     setNoneFavoriteNames(noneFavoriteNames);
-    setNewFavoriteName(favoriteNames);
+    setFavoriteName(favoriteNames);
     localStorage.setItem("storedFavoriteNames", JSON.stringify(favoriteNames));
     localStorage.setItem(
       "storedNoneFavoriteNames",
@@ -67,12 +67,12 @@ function App() {
   const [genderPictureClass, setGenderPictureClass] = useState([
     false,
     false,
-    false]
-  );
+    false,
+  ]);
 
   function resetSearch() {
     setNoneFavoriteNames(babyNamesData);
-    setNewFavoriteName([]);
+    setFavoriteName([]);
     setGenderPictureClass([true, false, false]);
     localStorage.clear();
   }
@@ -102,12 +102,12 @@ function App() {
         />
         <ResetButton resetSearch={resetSearch} />
       </div>
-      <hr></hr>
+      <hr />
       <div className="content-wrapper">
         <FavoriteNames
           babyNamesData={babyNamesData}
           moveFromFavorite={moveFromFavorite}
-          newFavoriteName={newFavoriteName}
+          newFavoriteName={favoriteName}
           isClickingFavoriteNames={isClickingFavoriteNames}
         />
         <hr></hr>

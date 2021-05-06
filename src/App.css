@@ -77,6 +77,12 @@ img {
 .gender-picture {
   border-bottom: 10px solid black;
 }
+.babyIcon {
+  margin: 0px 20px;
+}
+.babyIcon-highlight{
+  border-bottom: black 1px solid;
+}
 @media screen and (max-width: 600px) {
   .navbar {
     flex-direction: column;
@@ -84,7 +90,10 @@ img {
   .app-wrapper {
     width: 100vw;
   }
-  .icon-wrapper{
+  .icon-wrapper {
     display: flex;
   }
+  /* .babyIcon {
+    margin: 0px 20px;
+  } */
 }

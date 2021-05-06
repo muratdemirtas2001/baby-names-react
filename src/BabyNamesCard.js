@@ -11,7 +11,11 @@ function BabyNamesCard({ babyNames, moveToFavorite }) {
           })
           .map((baby) => {
             return (
-              <SingleBabyCard key={baby.id} baby={baby} moveToFavorite={moveToFavorite} />
+              <SingleBabyCard
+                key={baby.id}
+                baby={baby}
+                moveName={moveToFavorite}
+              />
             );
           })}
       </div>

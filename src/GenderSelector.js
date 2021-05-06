@@ -10,13 +10,25 @@ function GenderSelector({
   return (
     <>
       <div className="icon-wrapper">
-        <div className={genderPictureClass[0] ? "babyIcon" : "babyIcon"}>
+        <div
+          className={
+            genderPictureClass[0] ? "babyIcon babyIcon-highlight" : "babyIcon"
+          }
+        >
           <FaBabyCarriage color="gray" size="2em" onClick={resetSearch} />
         </div>
-        <div className={genderPictureClass[0] ? "babyIcon" : "babyIcon"}>
+        <div
+          className={
+            genderPictureClass[1] ? "babyIcon babyIcon-highlight" : "babyIcon"
+          }
+        >
           <FaBabyCarriage color="blue" size="2em" onClick={displayBoyNames} />
         </div>
-        <div className="babyIcon">
+        <div
+          className={
+            genderPictureClass[2] ? "babyIcon babyIcon-highlight" : "babyIcon"
+          }
+        >
           <FaBabyCarriage color="pink" size="2em" onClick={displayGirlNames} />
         </div>
       </div>

@@ -17,7 +17,7 @@ function FavoriteNames({
                 <SingleBabyCard
                   isClickingFavoriteNames={isClickingFavoriteNames}
                   baby={baby}
-                  moveFromFavorite={moveFromFavorite}
+                  moveName={moveFromFavorite}
                   key={baby.id}
                 />
               </>
