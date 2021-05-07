@@ -64,9 +64,10 @@
   cursor: pointer;
   font-weight: 400;
   transition-duration: 0.4s;
+  opacity: 0.7;
 }
 .search-button:hover {
-  background-color: #fcf8f8;
+  opacity: 1;
 }
 .content-wrapper {
   display: flex;
@@ -97,16 +98,18 @@
 .baby-male {
   background-color: rgb(60, 57, 241);
   color: white;
+  opacity: 1;
   /* font-weight: 900; */
 }
 .baby-male:hover {
-  background-color: rgb(103, 101, 238);
+  opacity: 0.8;
 }
 .baby-female {
   background-color: pink;
+  opacity: 0.8;
 }
 .baby-female:hover {
-  background-color: rgb(245, 165, 178);
+  opacity: 1;
 }
 .button {
   width: 125px;
@@ -128,6 +131,9 @@ img {
 .babyIcon {
   margin: 0px 20px;
 }
+/* .babyIcon:hover {
+  background-color: white;
+} */
 .babyIcon-highlight {
   border-bottom: black 1px solid;
 }
