@@ -12,6 +12,7 @@ function App() {
   let [favoriteName, setFavoriteName] = useState([]);
   let [noneFavoriteNames, setNoneFavoriteNames] = useState(babyNamesData);
   let [isClickingFavoriteNames] = useState(true);
+  const [showFavoriteNameMessage, setShowFavoriteNameMessage] = useState(true);
   let storedFavoriteNames = localStorage.getItem("storedFavoriteNames");
   let storedNoneFavoriteNames = localStorage.getItem("storedNoneFavoriteNames");
 
@@ -28,7 +29,11 @@ function App() {
     });
     setNoneFavoriteNames(filteredBabyNames);
   }
-
+  useEffect(() => {
+    let favoriteNamesMessageShow = favoriteName.length > 0;
+    console.log(favoriteNamesMessageShow)
+    setShowFavoriteNameMessage(favoriteNamesMessageShow);
+  }, [favoriteName]);
   function moveToFavorite(e) {
     setFavoriteName();
     let name = e.target.value;
@@ -109,6 +114,7 @@ function App() {
           moveFromFavorite={moveFromFavorite}
           newFavoriteName={favoriteName}
           isClickingFavoriteNames={isClickingFavoriteNames}
+          showFavoriteNameMessage={showFavoriteNameMessage}
         />
         <hr></hr>
         <BabyNamesCard

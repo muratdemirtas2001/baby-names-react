@@ -5,11 +5,14 @@ function FavoriteNames({
   newFavoriteName,
   moveFromFavorite,
   isClickingFavoriteNames,
+  showFavoriteNameMessage,
 }) {
+  console.log(isClickingFavoriteNames);
   if (newFavoriteName) {
     return (
       <div className="favorite-names-wrapper">
-        <p>Favorite names:</p>
+        <p>FAVORITE NAMES</p>
+        {!showFavoriteNameMessage && <p>You don't have any favorite name...</p>}
         <div className="favorite-names-section">
           {newFavoriteName.map((baby) => {
             return (
