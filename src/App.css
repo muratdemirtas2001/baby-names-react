@@ -12,14 +12,38 @@
   align-items: center;
   justify-content: center;
   width: 50vw;
+  /* background-color: #f2f2f2; */
 }
 .navbar {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
+  /* margin-top: 20px; */
+  background-color: #f2f2f2;
+  width: 100%;
+  padding: 20px;
 }
-
+.search-input {
+  width: 100%;
+  /* box-sizing: border-box; */
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  padding: 10px;
+  /* background-image: url('searchicon.png');
+  background-position: 50px; 
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px; */
+}
+.icon-wrapper {
+  display: flex;
+  margin-left: 20px;
+}
 .babyIcon {
   margin: 0px 50px;
   cursor: pointer;
@@ -29,17 +53,33 @@
 /* .babyIcon-border {
   border: 1px solid black;
 } */
+.search-button {
+  background-color: white;
+  width: 150px;
+  height: 40px;
+  font-size: medium;
+  margin: 5px 5px;
+  border: transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 400;
+  transition-duration: 0.4s;
+}
+.search-button:hover {
+  background-color: #fcf8f8;
+}
 .content-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0px;
+  margin-top: 75px;
 }
 .favorite-names-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 100px;
 }
 .favorite-names-section {
   display: flex;
@@ -57,18 +97,26 @@
 .baby-male {
   background-color: rgb(60, 57, 241);
   color: white;
-  font-weight: 900;
+  /* font-weight: 900; */
+}
+.baby-male:hover {
+  background-color: rgb(103, 101, 238);
 }
 .baby-female {
   background-color: pink;
 }
+.baby-female:hover {
+  background-color: rgb(245, 165, 178);
+}
 .button {
-  width: 80px;
+  width: 125px;
   height: 40px;
+  font-size: larger;
   margin: 5px 5px;
   border: transparent;
   border-radius: 10px;
   cursor: pointer;
+  font-weight: 600;
 }
 img {
   width: 20px;
@@ -80,7 +128,7 @@ img {
 .babyIcon {
   margin: 0px 20px;
 }
-.babyIcon-highlight{
+.babyIcon-highlight {
   border-bottom: black 1px solid;
 }
 @media screen and (max-width: 600px) {
@@ -90,8 +138,18 @@ img {
   .app-wrapper {
     width: 100vw;
   }
-  .icon-wrapper {
-    display: flex;
+  .content-wrapper {
+    margin-top: 125px;
+  }
+  .navbar {
+    padding: 10px;
+  }
+  .button {
+    width: 80px;
+    font-size: small;
+  }
+  .search-button {
+    font-size: small;
   }
   /* .babyIcon {
     margin: 0px 20px;

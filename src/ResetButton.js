@@ -1,8 +1,9 @@
 import React from "react";
-function ResetButton({resetSearch}) {
+function ResetButton({ resetSearch }) {
   return (
-    // <button onClick={() => setBabyNames([babyNamesData])}>reset search</button>
-    <button onClick={resetSearch} >reset search</button>
+    <button className="search-button" onClick={resetSearch}>
+      RESET SEARCH
+    </button>
   );
 }
 export default ResetButton;
