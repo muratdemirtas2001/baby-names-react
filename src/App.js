@@ -31,7 +31,6 @@ function App() {
   }
   useEffect(() => {
     let favoriteNamesMessageShow = favoriteName.length > 0;
-    console.log(favoriteNamesMessageShow)
     setShowFavoriteNameMessage(favoriteNamesMessageShow);
   }, [favoriteName]);
   function moveToFavorite(e) {
@@ -107,7 +106,6 @@ function App() {
         />
         <ResetButton resetSearch={resetSearch} />
       </div>
-      <hr />
       <div className="content-wrapper">
         <FavoriteNames
           babyNamesData={babyNamesData}

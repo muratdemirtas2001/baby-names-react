@@ -29,7 +29,6 @@ function GenderSelector({
             genderPictureClass[0] ? "babyIcon babyIcon-highlight" : "babyIcon"
           }
         >
-          {/* <FaBabyCarriage color="gray" size="2em" onClick={resetSearch} /> */}
           <FaBabyCarriage
             id="bothgender"
             onMouseEnter={highlightIconColor}
@@ -68,24 +67,6 @@ function GenderSelector({
           />
         </div>
       </div>
-      {/* <img
-        className={genderPictureClass[0] ? "gender-picture" : ""}
-        src={boyandgirlpicture}
-        alt="boyandgirl"
-        onClick={resetSearch}
-      ></img>
-      <img
-        className={genderPictureClass[1] ? "gender-picture" : ""}
-        src={babyboypicture}
-        alt="boy"
-        onClick={displayBoyNames}
-      ></img>
-      <img
-        className={genderPictureClass[2] ? "gender-picture" : ""}
-        src={babygirlpicture}
-        alt="girl"
-        onClick={displayGirlNames}
-      ></img> */}
     </>
   );
 }

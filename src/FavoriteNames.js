@@ -7,7 +7,7 @@ function FavoriteNames({
   isClickingFavoriteNames,
   showFavoriteNameMessage,
 }) {
-  console.log(isClickingFavoriteNames);
+  console.log(showFavoriteNameMessage);
   if (newFavoriteName) {
     return (
       <div className="favorite-names-wrapper">
@@ -27,6 +27,7 @@ function FavoriteNames({
             );
           })}
         </div>
+        <hr style={{ width: "300px" }} />
       </div>
     );
   } else return null;
